@@ -26,3 +26,5 @@ steps:
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
+- script: dotnet pack --configuration Release
+  displayName: 'Pack'
