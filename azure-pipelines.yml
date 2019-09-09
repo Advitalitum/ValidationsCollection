@@ -10,8 +10,24 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- script: dotnet build
-  displayName: 'Build'
+- script: dotnet build --configuration Debug
+  displayName: 'Build Debug'
 
-- script: dotnet test
-  displayName: 'test'
+- script: dotnet build --configuration Release
+  displayName: 'Build Release'
+
+- script: dotnet test --logger trx --framework netcoreapp2.2
+- task: PublishTestResults@2
+  displayName: 'Test NetCore'
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
+
+- script: dotnet test --logger trx --framework net45
+- task: PublishTestResults@2
+  displayName: 'Test NetFramework'
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
