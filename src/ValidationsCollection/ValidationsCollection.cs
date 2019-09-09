@@ -16,27 +16,22 @@ namespace ValidationsCollection
 		private static readonly byte[] _n1ForIndividualsCoefficients =
 			new byte[] { 3 }.Concat(_n2ForIndividualsCoefficients).ToArray();
 
-        /// <summary>
-        ///     Determines whether the specified inn string is valid.
-        /// </summary>
-        /// <param name = "innString"> The inn string. </param>
-        /// <returns>
-        ///     <c> true </c> if is valid ; otherwise, <c> false </c>.
-        /// </returns>
+		/// <summary>
+		///     Determines whether the specified inn string is valid.
+		/// </summary>
+		/// <param name = "innString"> The inn string. </param>
+		/// <returns>
+		///     <c> true </c> if is valid ; otherwise, <c> false </c>.
+		/// </returns>
 		[Pure]
 		[ContractAnnotation("null => false")]
-        public static bool IsValidInn([CanBeNull] string innString)
+		public static bool IsValidInn([CanBeNull] string innString)
 		{
-			if (innString is null)
+			if (innString is null || !innString.All(char.IsDigit))
 			{
 				return false;
 			}
-
-			if (!innString.All(char.IsDigit))
-			{
-				return false;
-			}
-
+			
 			var numbers = innString.Select(c => (byte) char.GetNumericValue(c)).ToArray();
 
 			return numbers.Length == 10
