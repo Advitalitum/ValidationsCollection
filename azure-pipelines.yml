@@ -28,5 +28,5 @@ steps:
     testResultsFiles: '**/*.trx'
 - script: dotnet pack --configuration Release
   displayName: 'Pack'
-- script: dotnet nuget push ValidationsCollection.nupkg --source "Bince19490994" -k AzureDevOps
+- script: dotnet nuget push ValidationsCollection.nupkg --source https://pkgs.dev.azure.com/Bince19490994/_packaging/Bince19490994/nuget/v3/index.json -k AzureDevOps
   displayName: 'NuGet publish'
