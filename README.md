@@ -1,5 +1,5 @@
 # Коллекция простых валидаций
 - Валидация ИНН
-- ```csharp
+```csharp
   public static bool IsValidInn(string innString)
-```
+  ```
