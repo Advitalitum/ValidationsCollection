@@ -26,7 +26,7 @@ steps:
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
-- script: dotnet pack --configuration Release -Symbols -SymbolPackageFormat snupkg
+- script: dotnet pack --configuration Release --include-symbols
   displayName: 'Pack'
 - script: dotnet nuget push **/*.nupkg -k $(NuGetApiKey) -s https://api.nuget.org/v3/index.json
   displayName: 'NuGet publish'
