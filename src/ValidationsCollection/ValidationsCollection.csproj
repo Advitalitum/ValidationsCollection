@@ -11,6 +11,7 @@
       Добавлен метод проверки ИНН
     </ReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://fluentvalidation.net</PackageProjectUrl>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 
