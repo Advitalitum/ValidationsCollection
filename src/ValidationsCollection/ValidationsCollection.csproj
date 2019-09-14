@@ -11,6 +11,7 @@
       Добавлен метод проверки ИНН
     </ReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
