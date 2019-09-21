@@ -31,7 +31,7 @@ namespace ValidationsCollection
 			{
 				return false;
 			}
-			
+
 			var numbers = innString.Select(c => (byte) char.GetNumericValue(c)).ToArray();
 
 			return numbers.Length == 10

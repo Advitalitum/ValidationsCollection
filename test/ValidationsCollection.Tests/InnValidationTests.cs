@@ -15,6 +15,7 @@ namespace ValidationsCollection.Tests
 
 		[Theory]
 		[InlineData("7707083893 ")]
+		[InlineData("7830002294")]
 		[InlineData("783¼002293")]
 		[InlineData("132808730602")]
 		[InlineData("")]
