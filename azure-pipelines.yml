@@ -13,7 +13,7 @@ steps:
 
 - script: dotnet test --logger trx --framework netcoreapp2.2
 - task: PublishTestResults@2
-  displayName: 'Test NetCore'
+  displayName: 'Test NetCore 2.2'
   condition: succeededOrFailed()
   inputs:
     testRunner: VSTest
@@ -22,6 +22,14 @@ steps:
 - script: dotnet test --logger trx --framework net45
 - task: PublishTestResults@2
   displayName: 'Test NetFramework'
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
+
+- script: dotnet test --logger trx --framework netcoreapp2.2
+- task: PublishTestResults@2
+  displayName: 'Test NetCore 3.0'
   condition: succeededOrFailed()
   inputs:
     testRunner: VSTest
