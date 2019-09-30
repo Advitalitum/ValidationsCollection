@@ -21,8 +21,8 @@ namespace ValidationsCollection.Tests
 		[InlineData("")]
 		[InlineData("123")]
 		[InlineData("Hello")]
-		[InlineData((string) null)]
-		public void IsInnValid_OnInvalidInnString_ReturnsFalse(string value) =>
+		[InlineData((string?) null)]
+		public void IsInnValid_OnInvalidInnString_ReturnsFalse(string? value) =>
 			ValidationsCollection.IsValidInn(value).Should().BeFalse();
 	}
 }

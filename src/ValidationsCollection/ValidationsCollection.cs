@@ -25,7 +25,7 @@ namespace ValidationsCollection
 		/// </returns>
 		[Pure]
 		[ContractAnnotation("null => false")]
-		public static bool IsValidInn([CanBeNull] string innString)
+		public static bool IsValidInn(string? innString)
 		{
 			if (innString is null || !innString.All(char.IsDigit))
 			{
