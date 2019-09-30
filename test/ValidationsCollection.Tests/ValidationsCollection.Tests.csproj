@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.2;net45</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.2;netcoreapp3.0;net45</TargetFrameworks>
     <IsPackable>false</IsPackable>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
