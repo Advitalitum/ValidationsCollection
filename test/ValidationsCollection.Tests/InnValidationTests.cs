@@ -11,7 +11,7 @@ namespace ValidationsCollection.Tests
 		[InlineData("500100732259")]
 		[InlineData("7830002293")]
 		public void IsInnValid_OnValidInnString_ReturnsTrue(string value) =>
-			ValidationsCollection.IsValidInn(value).Should().BeTrue();
+			Validations.IsValidInn(value).Should().BeTrue();
 
 		[Theory]
 		[InlineData("7707083893 ")]
@@ -23,6 +23,6 @@ namespace ValidationsCollection.Tests
 		[InlineData("Hello")]
 		[InlineData((string?) null)]
 		public void IsInnValid_OnInvalidInnString_ReturnsFalse(string? value) =>
-			ValidationsCollection.IsValidInn(value).Should().BeFalse();
+			Validations.IsValidInn(value).Should().BeFalse();
 	}
 }
