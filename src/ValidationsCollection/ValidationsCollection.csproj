@@ -5,12 +5,14 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>A simple library with validation helpers</Description>
     <RepositoryUrl>https://github.com/Advitalitum/ValidationsCollection</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
     <ReleaseNotes>
-      Changes in 1.0.0:
-      Добавлен метод проверки ИНН
+      Changes in 2.0.0:
+      Класс ValdiationCollection переименован в Validations
       Changes in 1.0.1:
       Добавлена поддержка C# 8.0 и netstandard2.1
+      Changes in 1.0.0:
+      Добавлен метод проверки ИНН
     </ReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Advitalitum/ValidationsCollection</PackageProjectUrl>

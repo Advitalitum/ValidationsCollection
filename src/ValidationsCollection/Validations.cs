@@ -6,7 +6,7 @@ namespace ValidationsCollection
 	/// <summary>
 	///     Collection of validations
 	/// </summary>
-	public static class ValidationsCollection
+	public static class Validations
 	{
 		private static readonly byte[] _n1ForEntitiesCoefficients = { 2, 4, 10, 3, 5, 9, 4, 6, 8 };
 
