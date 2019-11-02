@@ -5,8 +5,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>A simple library with validation helpers</Description>
     <RepositoryUrl>https://github.com/Advitalitum/ValidationsCollection</RepositoryUrl>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <ReleaseNotes>
+      Changes in 2.0.1:
+      В XML комментарии добавлено замечание о томч что представляет из себя валидная строка инн
       Changes in 2.0.0:
       Класс ValdiationCollection переименован в Validations
       Changes in 1.0.1:

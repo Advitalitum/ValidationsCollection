@@ -23,6 +23,7 @@ namespace ValidationsCollection
 		/// <returns>
 		///     <c> true </c> if is valid ; otherwise, <c> false </c>.
 		/// </returns>
+		/// <remarks> Valid inn string consists of 10 or 12 digits and has correct check digit </remarks>
 		[Pure]
 		[ContractAnnotation("null => false")]
 		public static bool IsValidInn(string? innString)
