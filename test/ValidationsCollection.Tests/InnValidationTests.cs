@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using JetBrains.Annotations;
 using Xunit;
 
 namespace ValidationsCollection.Tests
@@ -18,11 +19,12 @@ namespace ValidationsCollection.Tests
 		[InlineData("7830002294")]
 		[InlineData("783¼002293")]
 		[InlineData("132808730602")]
+		[InlineData("1328087306¼6")]
 		[InlineData("")]
 		[InlineData("123")]
 		[InlineData("Hello")]
 		[InlineData((string?) null)]
-		public void IsInnValid_OnInvalidInnString_ReturnsFalse(string? value) =>
+		public void IsInnValid_OnInvalidInnString_ReturnsFalse([CanBeNull] string? value) =>
 			Validations.IsValidInn(value).Should().BeFalse();
 	}
 }
