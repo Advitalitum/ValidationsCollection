@@ -1,12 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net45</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>A simple library with validation helpers</Description>
     <RepositoryUrl>https://github.com/Advitalitum/ValidationsCollection</RepositoryUrl>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
     <ReleaseNotes>
+      Changes in 2.0.3:
+      Оптимизация метода валидации ИНН. Добавлен проект с бенчмарками
       Changes in 2.0.2:
       В XML комментарии добавлена ссылка на википедию с контрольным числом ИНН
       Changes in 2.0.1:
