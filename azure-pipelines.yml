@@ -36,6 +36,6 @@ steps:
     testResultsFiles: '**/*.trx'
 - script: dotnet pack --configuration Release # --include-symbols
   displayName: 'Pack'
-- script: dotnet nuget push src/**/ValidationsCollection*.nupkg -k $(NuGetApiKey) -s https://api.nuget.org/v3/index.json -n true
+- script: dotnet nuget push src/**/ValidationsCollection*.nupkg -k $(NuGetApiKey) -s https://api.nuget.org/v3/index.json -n true --skip-duplicate
   displayName: 'NuGet publish'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
