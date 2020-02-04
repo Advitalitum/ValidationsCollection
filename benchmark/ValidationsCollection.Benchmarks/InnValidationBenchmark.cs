@@ -1,8 +1,10 @@
-﻿using System;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 
 namespace ValidationsCollection.Benchmarks
 {
+	[MemoryDiagnoser]
+	[GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
 	public class InnValidationBenchmark
 	{
 		private readonly string _attemptValueForEntity;
@@ -11,22 +13,24 @@ namespace ValidationsCollection.Benchmarks
 
 		public InnValidationBenchmark()
 		{
-			var random = new Random(42);
-
-			_attemptValueForEntity = random.Next().ToString("0000000000");
-			_attemptValueForIndividual = random.Next().ToString("000000000000");
+			_attemptValueForEntity = "7707083893";
+			_attemptValueForIndividual = "132808730606";
 		}
 
 		[Benchmark]
+		[BenchmarkCategory("IsValidInnForEntity")]
 		public bool IsValidInnForEntity() => Validations.IsValidInn(_attemptValueForEntity);
 
-		[Benchmark]
-		public bool IsValidInnOldForEntity() => Validations.IsValidInnOld(_attemptValueForEntity);
+		[Benchmark(Baseline = true)]
+		[BenchmarkCategory("IsValidInnForEntity")]
+		public bool IsValidInnOldForEntity() => OldValidations.IsValidInn(_attemptValueForEntity);
 
 		[Benchmark]
+		[BenchmarkCategory("IsValidInnForIndividual")]
 		public bool IsValidInnForIndividual() => Validations.IsValidInn(_attemptValueForIndividual);
 
-		[Benchmark]
-		public bool IsValidInnOldForIndividual() => Validations.IsValidInnOld(_attemptValueForIndividual);
+		[Benchmark(Baseline = true)]
+		[BenchmarkCategory("IsValidInnForIndividual")]
+		public bool IsValidInnOldForIndividual() => OldValidations.IsValidInn(_attemptValueForIndividual);
 	}
 }

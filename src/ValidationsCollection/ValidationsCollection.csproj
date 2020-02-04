@@ -5,8 +5,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>A simple library with validation helpers</Description>
     <RepositoryUrl>https://github.com/Advitalitum/ValidationsCollection</RepositoryUrl>
-    <Version>2.0.3</Version>
+    <Version>2.0.4</Version>
     <ReleaseNotes>
+      Changes in 2.0.4:
+      Оптимизация метода валидации ИНН. Добавлены Nullable атрибуты
       Changes in 2.0.3:
       Оптимизация метода валидации ИНН. Добавлен проект с бенчмарками
       Changes in 2.0.2:
@@ -29,6 +31,10 @@
 
   <ItemGroup>
     <PackageReference Include="jetbrains.annotations" Version="2019.1.3" />
+    <PackageReference Include="Nullable" Version="1.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
 namespace ValidationsCollection
@@ -6,15 +7,15 @@ namespace ValidationsCollection
 	/// <summary>
 	///     Collection of validations
 	/// </summary>
-	public static partial class Validations
+	public static class Validations
 	{
+		private const int NonDigitByte = 255;
+
 		private static readonly byte[] _n1ForEntitiesCoefficients = { 2, 4, 10, 3, 5, 9, 4, 6, 8 };
 
-		private static readonly byte[] _n2ForIndividualsCoefficients =
-			new byte[] { 7 }.Concat(_n1ForEntitiesCoefficients).ToArray();
+		private static readonly byte[] _n2ForIndividualsCoefficients = { 7, 2, 4, 10, 3, 5, 9, 4, 6, 8 };
 
-		private static readonly byte[] _n1ForIndividualsCoefficients =
-			new byte[] { 3 }.Concat(_n2ForIndividualsCoefficients).ToArray();
+		private static readonly byte[] _n1ForIndividualsCoefficients = { 3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8 };
 
 		/// <summary>
 		///     Determines whether the specified inn string is valid.
@@ -29,9 +30,9 @@ namespace ValidationsCollection
 		/// </remarks>
 		[Pure]
 		[ContractAnnotation("null => false")]
-		public static bool IsValidInn([CanBeNull] string? innString)
+		public static bool IsValidInn([CanBeNull] [NotNullWhen(true)] string? innString)
 		{
-			if (innString is null)
+			if (innString == null)
 			{
 				return false;
 			}
@@ -44,53 +45,81 @@ namespace ValidationsCollection
 			};
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static bool IsValidInnForIndividual(string innString)
 		{
-			var sum1 = 0;
-			var sum2 = 0;
-
+			var n2Sum = 0;
+			var n1Sum = 0;
+			
 			for (var index = 0; index < 10; index++)
 			{
-				if (!char.IsDigit(innString[index]))
+				var currentNumericValue = GetNumericValue(innString[index]);
+
+				if (currentNumericValue == NonDigitByte)
 				{
 					return false;
 				}
 
-				var value = GetNumericValue(innString[index]);
-
-				sum1 += _n2ForIndividualsCoefficients[index] * value;
-				sum2 += _n1ForIndividualsCoefficients[index] * value;
+				n2Sum += _n2ForIndividualsCoefficients[index] * currentNumericValue;
+				n1Sum += _n1ForIndividualsCoefficients[index] * currentNumericValue;
 			}
 
-			if (!char.IsDigit(innString[10]) || (sum1 % 11 % 10 != GetNumericValue(innString[10])))
+			var tenth = GetNumericValue(innString[10]);
+
+			if ((tenth == NonDigitByte) || (n2Sum % 11 % 10 != tenth))
 			{
 				return false;
 			}
 
-			sum2 += _n1ForIndividualsCoefficients[10] * GetNumericValue(innString[10]);
+			var eleventh = GetNumericValue(innString[11]);
 
-			return char.IsDigit(innString[11]) && (sum2 % 11 % 10 == GetNumericValue(innString[11]));
+			if (eleventh == NonDigitByte)
+			{
+				return false;
+			}
+
+			n1Sum += _n1ForIndividualsCoefficients[10] * tenth;
+
+			return n1Sum % 11 % 10 == eleventh;
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static bool IsValidInnForEntity(string innString)
 		{
 			var sum = 0;
 
-			for (var index = 0; index < innString.Length - 1; index++)
+			for (var index = 0; index < 9; index++)
 			{
-				var current = innString[index];
+				var currentNumericValue = GetNumericValue(innString[index]);
 
-				if (!char.IsDigit(current))
+				if (currentNumericValue == NonDigitByte)
 				{
 					return false;
 				}
 
-				sum += _n1ForEntitiesCoefficients[index] * GetNumericValue(current);
+				sum += _n1ForEntitiesCoefficients[index] * currentNumericValue;
 			}
 
-			return char.IsDigit(innString[9]) && (sum % 11 % 10 == GetNumericValue(innString[9]));
+			var ninth = GetNumericValue(innString[9]);
+
+			return (ninth != NonDigitByte) && (sum % 11 % 10 == ninth);
 		}
 
-		private static byte GetNumericValue(char c) => (byte) char.GetNumericValue(c);
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		private static byte GetNumericValue(in char c) =>
+			c switch
+			{
+				'0' => 0,
+				'1' => 1,
+				'2' => 2,
+				'3' => 3,
+				'4' => 4,
+				'5' => 5,
+				'6' => 6,
+				'7' => 7,
+				'8' => 8,
+				'9' => 9,
+				_ => NonDigitByte
+			};
 	}
 }
