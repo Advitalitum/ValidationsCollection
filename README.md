@@ -3,7 +3,13 @@
 - Быстрая валидация ИНН
 ```csharp
   public static bool IsValidInn(string? innString)
+```
+```csharp
   public static bool IsValidInnForIndividual(string? innString)
+```
+```csharp
   public static bool IsValidInnForEntity(string? innString)
+```
+```csharp
   public static ref readonly InnValidationResult ValidateInn(string? innString)
 ```
