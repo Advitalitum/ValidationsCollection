@@ -5,8 +5,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>A simple library with validation helpers</Description>
     <RepositoryUrl>https://github.com/Advitalitum/ValidationsCollection</RepositoryUrl>
-    <Version>2.0.4</Version>
+    <Version>2.1.0</Version>
     <ReleaseNotes>
+      Changes in 2.1.0:
+      Добавлены методы для проверки ИНН физлиц/юрлиц, добавлен метод ValidateInn
       Changes in 2.0.4:
       Оптимизация метода валидации ИНН. Добавлены Nullable атрибуты
       Changes in 2.0.3:

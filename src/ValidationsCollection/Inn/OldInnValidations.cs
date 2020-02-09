@@ -2,14 +2,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
-namespace ValidationsCollection
+namespace ValidationsCollection.Inn
 {
 	/// <summary>
 	///     Collection of validations
 	/// </summary>
-	public static class Validations
+	internal static class OldInnValidations
 	{
-		private const int NonDigitByte = 255;
+		private const byte NonDigitByte = 255;
 
 		private static readonly byte[] _n1ForEntitiesCoefficients = { 2, 4, 10, 3, 5, 9, 4, 6, 8 };
 
@@ -29,10 +29,11 @@ namespace ValidationsCollection
 		///     (https://ru.wikipedia.org/wiki/Контрольное_число#Номера_ИНН)
 		/// </remarks>
 		[Pure]
+		[PublicAPI]
 		[ContractAnnotation("null => false")]
 		public static bool IsValidInn([CanBeNull] [NotNullWhen(true)] string? innString)
 		{
-			if (innString == null)
+			if (innString is null)
 			{
 				return false;
 			}
