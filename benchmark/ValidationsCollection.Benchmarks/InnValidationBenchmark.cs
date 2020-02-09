@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
+using ValidationsCollection.Inn;
 
 namespace ValidationsCollection.Benchmarks
 {
@@ -23,7 +24,7 @@ namespace ValidationsCollection.Benchmarks
 
 		[Benchmark(Baseline = true)]
 		[BenchmarkCategory("IsValidInnForEntity")]
-		public bool IsValidInnOldForEntity() => OldValidations.IsValidInn(_attemptValueForEntity);
+		public bool IsValidInnOldForEntity() => OldInnValidations.IsValidInn(_attemptValueForEntity);
 
 		[Benchmark]
 		[BenchmarkCategory("IsValidInnForIndividual")]
@@ -31,6 +32,6 @@ namespace ValidationsCollection.Benchmarks
 
 		[Benchmark(Baseline = true)]
 		[BenchmarkCategory("IsValidInnForIndividual")]
-		public bool IsValidInnOldForIndividual() => OldValidations.IsValidInn(_attemptValueForIndividual);
+		public bool IsValidInnOldForIndividual() => OldInnValidations.IsValidInn(_attemptValueForIndividual);
 	}
 }
