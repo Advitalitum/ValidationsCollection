@@ -60,7 +60,7 @@ namespace ValidationsCollection
 		///     <c> true </c> if is valid ; otherwise, <c> false </c>.
 		/// </returns>
 		/// <remarks>
-		///     Valid Inn for individual string consists of 10 digits and has correct check digit
+		///     Valid Inn for individual string consists of 12 digits and has correct check digit
 		///     (https://ru.wikipedia.org/wiki/Контрольное_число#Номера_ИНН)
 		/// </remarks>
 		[Pure]
