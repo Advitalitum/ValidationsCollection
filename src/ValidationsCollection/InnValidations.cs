@@ -2,16 +2,15 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using ValidationsCollection.Inn;
+using static ValidationsCollection.ValidationsHelper;
 
 namespace ValidationsCollection
 {
 	/// <summary>
 	///     Collection of validations
 	/// </summary>
-	public static class Validations
+	public static partial class Validations
 	{
-		private const byte NonDigitByte = 255;
-
 		private static readonly byte[] _n1ForEntitiesCoefficients = { 2, 4, 10, 3, 5, 9, 4, 6, 8 };
 
 		private static readonly byte[] _n2ForIndividualsCoefficients = { 7, 2, 4, 10, 3, 5, 9, 4, 6, 8 };
@@ -168,22 +167,5 @@ namespace ValidationsCollection
 
 			return ref InnValidationResult.Invalid;
 		}
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private static byte GetNumericValue(in char c) =>
-			c switch
-			{
-				'0' => 0,
-				'1' => 1,
-				'2' => 2,
-				'3' => 3,
-				'4' => 4,
-				'5' => 5,
-				'6' => 6,
-				'7' => 7,
-				'8' => 8,
-				'9' => 9,
-				_ => NonDigitByte
-			};
 	}
 }

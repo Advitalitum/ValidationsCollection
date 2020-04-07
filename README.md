@@ -13,3 +13,7 @@
 ```csharp
   public static ref readonly InnValidationResult ValidateInn(string? innString)
 ```
+- Быстрая валидация КПП
+```csharp
+  public static bool IsValidKpp(string? innString)
+```

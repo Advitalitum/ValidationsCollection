@@ -12,34 +12,34 @@ namespace ValidationsCollection.Tests
 		[Theory]
 		[MemberData(nameof(ValidInnForIndividualData))]
 		[MemberData(nameof(ValidInnForEntityData))]
-		public void IsInnValid_OnValidInnString_ReturnsTrue(string value) =>
+		public void IsValidInn_OnValidInnString_ReturnsTrue(string value) =>
 			Validations.IsValidInn(value).Should().BeTrue();
 
 		[Theory]
 		[MemberData(nameof(InvalidData))]
-		public void IsInnValid_OnInvalidInnString_ReturnsFalse([CanBeNull] string? value) =>
+		public void IsValidInn_OnInvalidInnString_ReturnsFalse([CanBeNull] string? value) =>
 			Validations.IsValidInn(value).Should().BeFalse();
 
 		[Theory]
 		[MemberData(nameof(ValidInnForEntityData))]
-		public void IsInnValidForEntity_OnValidInnString_ReturnsTrue(string value) =>
+		public void IsValidInnForEntity_OnValidInnString_ReturnsTrue(string value) =>
 			Validations.IsValidInnForEntity(value).Should().BeTrue();
 
 		[Theory]
 		[MemberData(nameof(InvalidData))]
 		[MemberData(nameof(ValidInnForIndividualData))]
-		public void IsInnValidForEntity_OnInvalidInnString_ReturnsFalse([CanBeNull] string? value) =>
+		public void IsValidInnForEntity_OnInvalidInnString_ReturnsFalse([CanBeNull] string? value) =>
 			Validations.IsValidInnForEntity(value).Should().BeFalse();
 
 		[Theory]
 		[MemberData(nameof(ValidInnForIndividualData))]
-		public void IsInnValidForIndividual_OnValidInnString_ReturnsTrue(string value) =>
+		public void IsValidInnForIndividual_OnValidInnString_ReturnsTrue(string value) =>
 			Validations.IsValidInnForIndividual(value).Should().BeTrue();
 
 		[Theory]
 		[MemberData(nameof(InvalidData))]
 		[MemberData(nameof(ValidInnForEntityData))]
-		public void IsInnValidForIndividual_OnInvalidInnString_ReturnsFalse([CanBeNull] string? value) =>
+		public void IsValidInnForIndividual_OnInvalidInnString_ReturnsFalse([CanBeNull] string? value) =>
 			Validations.IsValidInnForIndividual(value).Should().BeFalse();
 
 		[Theory]

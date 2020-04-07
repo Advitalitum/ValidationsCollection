@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 
 namespace ValidationsCollection.Inn
 {
@@ -6,7 +7,7 @@ namespace ValidationsCollection.Inn
 	///     Result of Inn string validation
 	/// </summary>
 	[PublicAPI]
-	public readonly struct InnValidationResult
+	public readonly struct InnValidationResult : IEquatable<InnValidationResult>
 	{
 		private static readonly InnValidationResult _invalid = new InnValidationResult(InnType.Unknown);
 
@@ -53,9 +54,12 @@ namespace ValidationsCollection.Inn
 		}
 
 		/// <inheritdoc />
+		public bool Equals(InnValidationResult other) => Equals(in other);
+
+		/// <inheritdoc />
 		[Pure]
 		[PublicAPI]
-		public override bool Equals(object obj) => obj is InnValidationResult result && Equals(result);
+		public override bool Equals(object obj) => obj is InnValidationResult other && Equals(other);
 
 		/// <inheritdoc cref = "Equals(object)" />
 		[Pure]
@@ -66,5 +70,25 @@ namespace ValidationsCollection.Inn
 		[Pure]
 		[PublicAPI]
 		public override int GetHashCode() => (int) InnType;
+
+		/// <summary>
+		///     Implements the operator ==.
+		/// </summary>
+		/// <param name = "left"> The left. </param>
+		/// <param name = "right"> The right. </param>
+		/// <returns>
+		///     The result of the operator.
+		/// </returns>
+		public static bool operator ==(InnValidationResult left, InnValidationResult right) => left.Equals(right);
+
+		/// <summary>
+		///     Implements the operator !=.
+		/// </summary>
+		/// <param name = "left"> The left. </param>
+		/// <param name = "right"> The right. </param>
+		/// <returns>
+		///     The result of the operator.
+		/// </returns>
+		public static bool operator !=(InnValidationResult left, InnValidationResult right) => !left.Equals(right);
 	}
 }
