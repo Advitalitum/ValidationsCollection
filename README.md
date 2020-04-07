@@ -15,5 +15,5 @@
 ```
 - Быстрая валидация КПП
 ```csharp
-  public static bool IsValidKpp(string? innString)
+  public static bool IsValidKpp(string? kppString)
 ```
