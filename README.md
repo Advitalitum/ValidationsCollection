@@ -17,3 +17,7 @@
 ```csharp
   public static bool IsValidKpp(string? kppString)
 ```
+- Быстрая валидация СНИЛС
+```csharp
+  public static bool IsValidSnils(string? snilsString)
+```

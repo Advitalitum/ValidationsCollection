@@ -5,8 +5,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>A simple library with validation helpers</Description>
     <RepositoryUrl>https://github.com/Advitalitum/ValidationsCollection</RepositoryUrl>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
     <ReleaseNotes>
+      Changes in 2.3.0:
+      Добавлен метод проверки СНИЛС
       Changes in 2.2.0:
       Добавлен метод проверки КПП
       Changes in 2.1.0:
