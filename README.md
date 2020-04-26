@@ -8,6 +8,7 @@
     PM> Install-Package ValidationsCollection
     
 ## Использование
+Все методы объявлены в статическом классе ```Validations```
 - Быстрая валидация ИНН
 ```csharp
   public static bool IsValidInn(string? innString)
