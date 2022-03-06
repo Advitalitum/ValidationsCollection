@@ -27,7 +27,7 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
 
-- script: dotnet test --logger trx --framework netcoreapp2.2
+- script: dotnet test --logger trx --framework netcoreapp3.0
 - task: PublishTestResults@2
   displayName: 'Test NetCore 3.0'
   condition: succeededOrFailed()
